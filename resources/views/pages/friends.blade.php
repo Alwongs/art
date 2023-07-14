@@ -20,37 +20,18 @@
 
 
         <div class="friends-page__right">
-            <div class="friends-page__friends-block">
-                <h2>Я запросил в друзья:</h2>
-
-                {{-- @if(Auth::user()-hasFriendRequestPending($user)) --}}
-
-
-
-
-                <ul class="friends-page__friend-list">
-                    @if($requests->count())
+            @if($requests->count())
+                <div class="friends-page__friends-block">
+                    <h2>Запросы в друзья:</h2>
+                    <ul class="friends-page__friend-list">
                         @foreach($requests as $request)
-                            <li>{{ $request->name }}</li>
+                            <li>
+                                <a href="{{ route('users.show', $request->id) }}">{{ $request->name }}</a>
+                            </li>
                         @endforeach
-                    @else
-                        <li> У вас нет запросов</li>
-                    @endif
-                </ul>
-            </div>
-            
-            <div class="friends-page__friends-block">
-                <h2>Меня запросили в друзья:</h2>
-                <ul class="friends-page__friend-list">
-                    @if($requests->count())
-                        @foreach($requests as $request)
-                            <li>{{ $request->name }}</li>
-                        @endforeach
-                    @else
-                        <li> У вас нет запросов</li>
-                    @endif
-                </ul>
-            </div>
+                    </ul>
+                </div>
+            @endif
         </div>
     </div>
 </x-app-layout>

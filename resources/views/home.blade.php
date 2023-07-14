@@ -17,57 +17,29 @@
 
         <div class="home-page__right">
             @auth
-            <div class="home-page__friends-block">
-                <h2>Ваши друзья</h2>
-                <ul class="home-page__friend-list">
-                    @foreach ($friends as $friend)
-                        <li><a href="{{ route('users.show', $friend->id) }}">{{ $friend->name }}</a></li>                        
-                    @endforeach
-                </ul>
-            </div>
-            @endauth
-
-
-
-
-
-
-
-
-
-
-
-            @auth
-                <div class="friends-page__friends-block">
-                    <h2>Я запросил в друзья:</h2>
-                    <ul class="friends-page__friend-list">
-                        @if($requests->count())
-                            @foreach($requests as $request)
-                                <li>
-                                    {{ $request->name }}
-                                </li>
+                @if($friends->count())
+                    <div class="home-page__friends-block">
+                        <h2>Ваши друзья</h2>
+                        <ul class="home-page__friend-list">
+                            @foreach ($friends as $friend)
+                                <li><a href="{{ route('users.show', $friend->id) }}">{{ $friend->name }}</a></li>                        
                             @endforeach
-                        @else
-                            <li> У вас нет запросов</li>
-                        @endif
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
+                @endif
                 
-
-                <div class="friends-page__friends-block">
-                    <h2>Меня запросили в друзья:</h2>
-                    <ul class="friends-page__friend-list">
-                        @if($requests->count())
+                @if($requests->count())
+                    <div class="friends-page__friends-block">
+                        <h2>Запросы в друзья:</h2>
+                        <ul class="friends-page__friend-list">
                             @foreach($requests as $request)
                                 <li>
-                                    {{ $request->name }}
+                                    <a href="{{ route('users.show', $request->id) }}">{{ $request->name }}</a>
                                 </li>
                             @endforeach
-                        @else
-                            <li> У вас нет запросов</li>
-                        @endif
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
+                @endif
             @endauth        
         
         

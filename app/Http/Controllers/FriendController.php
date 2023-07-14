@@ -22,32 +22,37 @@ class FriendController extends Controller
     }
 
     public function requestFriendship($id) {
+        $auth = Auth::user();
         $user = User::find($id);
 
         if (!$user) {
-            return  redirect()->route('home')->with('info', 'Пользователь не найден!');
+            return redirect()->route('home')->with('info', 'Пользователь не найден!');
         }
-        if ( Auth::user()->hasFriendRequestPending($user) || $user->hasFriendRequestPending(Auth::user())) {
+        if ( $auth->id === $user->id ) {
+            return  redirect()->route('home'); 
+        }
+        if ( $auth->hasFriendRequestPending($user) || $user->hasFriendRequestPending($auth)) {
             return redirect()->route('users.show', $user->id)->with('info', 'Пользователю отправлен запрос в друзья');
         }
-        if ( Auth::user()->isFriendWith($user) ) {
+        if ( $auth->isFriendWith($user) ) {
             return redirect()->route('users.show', $user->id)->with('info', 'Пользователь уже в друзьях');
         }
-        Auth::user()->addFriend($user);
+        $auth->addFriend($user);
 
         return redirect()->route('users.show', $user->id)->with('info', 'Пользователю отправлен запрос в друзья');
     }
 
     public function acceptFriendship($id) {
+        $auth = Auth::user();
         $user = User::find($id);
 
         if (!$user) {
             return  redirect()->route('home')->with('info', 'Пользователь не найден!');
         }      
-        if ( !Auth::user()->hasFriendRequestReceived($user) )  {
+        if ( !$auth->hasFriendRequestReceived($user) )  {
             return  redirect()->route('home');            
         } 
-        Auth::user()->acceptFriendRequest($user);
+        $auth->acceptFriendRequest($user);
 
         return redirect()->route('users.show', $user->id)->with('info', 'Запрос в друзья принят');
     }

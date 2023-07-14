@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
 
-    public function index() {
+    public function index() 
+    {
         if (Auth::user()) {
             $currentUser = Auth::user();
             $friends = $currentUser->friends();
@@ -20,7 +21,6 @@ class HomeController extends Controller
             $friends = [];
             $requests = [];
         }
-
 
         $posts = Post::all();
 
