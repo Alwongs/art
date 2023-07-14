@@ -1,0 +1,8 @@
+auth: https://laravel.com/docs/10.x/starter-kits#laravel-breeze
+
+
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
+npm install -D sass
