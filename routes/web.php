@@ -19,27 +19,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/person', [PersonController::class, 'index'])->name('person');
-Route::get('/friends', [FriendController::class, 'index'])->name('friends');
+// Route::get('/person', [PersonController::class, 'index'])->name('person');
+ 
 
 
-Route::resources([
-    'posts' => PostController::class, 
-    'users' => UserController::class, 
-]);
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
 
+    Route::resources([
+        'posts' => PostController::class, 
+        'users' => UserController::class, 
+    ]);
+
+
+
+    Route::get('/friends', [FriendController::class, 'getMyFriends'])->name('friends'); 
     Route::get('/friends/request/{user_id}', [FriendController::class, 'requestFriendship'])->name('friends.request');
     Route::get('/friends/accept/{user_id}', [FriendController::class, 'acceptFriendship'])->name('friends.accept');
+    Route::post('/friends/delete/{user_id}', [FriendController::class, 'deleteFriendship'])->name('friends.delete');
 
 
 

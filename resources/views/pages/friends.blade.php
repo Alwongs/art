@@ -3,34 +3,23 @@
         Друзья
     </x-slot>
     <div class="friends-page">
-
         <div class="friends-page__left">
-            <ul class="friends-page__friend-list">
 
-                @if($friends->count())
-                    @foreach($friends as $user)
-                        @include('my-components.user-card')
-                    @endforeach
-                @else
-                    <li class="user-card"> У вас нет друзей</li>
-                @endif
-
-            </ul>
+            @if(Auth::user()->friends()->count())
+                @include('my-components.users-block', ['users' => Auth::user()->friends()])
+            @else
+                <p class="user-card"> У вас нет друзей</p>
+            @endif
         </div>
 
 
         <div class="friends-page__right">
-            @if($requests->count())
-                <div class="friends-page__friends-block">
-                    <h2>Запросы в друзья:</h2>
-                    <ul class="friends-page__friend-list">
-                        @foreach($requests as $request)
-                            <li>
-                                <a href="{{ route('users.show', $request->id) }}">{{ $request->name }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
+        
+            @if(Auth::user()->friendRequests()->count())
+                @include('my-components.users-block-small', [
+                    'title' => 'Запросы в друзья', 
+                    'users' => Auth::user()->friendRequests()
+                ])    
             @endif
         </div>
     </div>

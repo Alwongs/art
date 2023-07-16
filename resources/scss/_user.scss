@@ -1,0 +1,71 @@
+.user-page-info {
+    background-color: #fff;
+    border: 1px solid rgb(229, 229, 229);
+    box-shadow: 1px 1px 20px 3px rgba(145, 145, 145, 0.1);
+    border-radius: 15px;
+    padding: 26px;
+
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    &__text-block       {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &__text-block header {
+        font-size: 28px;
+    }
+    &__text-block footer {
+        display: flex;
+    }
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.user-page-content {
+    display: flex;
+    gap: 20px;
+    &__left {
+        flex: 0 0 700px;
+    }
+    &__right {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }         
+}
+
+.user-list-page {
+    display: flex;
+    gap: 20px;
+    &__left {
+        flex: 0 0 700px;
+    }
+    &__right {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    } 
+}
+
+.user-list {
+    li {
+        margin-bottom: 16px;
+    }
+}

@@ -2,7 +2,7 @@
     <div class="top-panel__container container">
 
         <div class="top-panel-left">
-            <a href="{{ route('dashboard') }}">
+            <a href="{{ route('home') }}">
                 <x-application-logo class="top-panel-left__logo" />
             </a>
             <a href="{{ route('home') }}">

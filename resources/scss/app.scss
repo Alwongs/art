@@ -2,12 +2,22 @@
 @import "common";
 @import "top-panel";
 @import "aside";
-@import "home";
-@import "post-card";
-@import "user-card";
-@import "friends";
-@import "person";
+@import "notification";
 @import "button";
+
+@import "home";
+
+@import "posts";
+@import "posts-block";
+@import "post-card";
+
+@import "users-block";
+@import "users-block-small";
+@import "user-card";
+@import "user-card-small";
+@import "user";
+
+@import "friends";
 
 
 

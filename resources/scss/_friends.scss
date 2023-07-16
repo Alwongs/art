@@ -4,26 +4,7 @@
     &__left {
         flex: 0 0 700px;
     }
-    &__friend-list li {
-        margin-bottom: 10px;
-    }
     &__right {
-        // border: 1px solid red;
         flex: 1 1 auto;
-    }
-    &__friends-block {
-        background-color: #fff;
-        border: 1px solid rgb(229, 229, 229);
-        box-shadow: 1px 1px 20px 3px rgba(145, 145, 145, 0.1);
-        border-radius: 15px;
-        padding: 26px;
-        h2 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-        li:not(:last-child) {
-            margin-bottom: 8px;
-        }
     }
 }

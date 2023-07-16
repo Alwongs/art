@@ -1,12 +1,24 @@
 .btn {
     display: flex;
     align-items: center;
-    background-color: rgb(54, 135, 54);
     border-radius: 5px;
     color: white;
     width: fit-content;
     min-width: 120px;
-    height: 44px;
+    height: 38px;
+    font-size: 17px;
     line-height: 44px;
     padding: 0 20px;
+}
+.btn-green {
+    background-color: rgb(68, 167, 68);
+    &:hover {
+        background-color: rgb(25, 199, 25);        
+    }
+}
+.btn-red {
+    background-color: rgb(220, 88, 88);
+    &:hover {
+        background-color: rgb(255, 70, 70);      
+    }    
 }

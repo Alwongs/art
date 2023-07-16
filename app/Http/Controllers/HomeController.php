@@ -13,18 +13,10 @@ class HomeController extends Controller
 
     public function index() 
     {
-        if (Auth::user()) {
-            $currentUser = Auth::user();
-            $friends = $currentUser->friends();
-            $requests = $currentUser->friendRequests(); 
-        } else {
-            $friends = [];
-            $requests = [];
-        }
-
+        $user = Auth::user() ? Auth::user() : null;
         $posts = Post::all();
 
-        return view('home', compact('posts', 'friends', 'requests'));
+        return view('pages.home', compact('posts', 'user'));
     }
 
 }

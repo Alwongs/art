@@ -44,6 +44,11 @@ class User extends Authenticatable
     ];
 
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
     // устанавливаем отношение многи ко многим, друзья
     public function friendsOfMine()
     {
@@ -89,6 +94,12 @@ class User extends Authenticatable
         $this->friendOf()->attach($user->id);
     }
 
+    // удалить из друзей
+    public function deleteFriend(User $user) {
+        $this->friendOf()->detach($user->id);
+        $this->friendsOfMine()->detach($user->id);
+    }
+
     // принять запрос на дружбу
     public function acceptFriendRequest(User $user) {
         $this->friendRequests()->where('id', $user->id)->first()->pivot->update([
@@ -99,5 +110,6 @@ class User extends Authenticatable
     // пользователь уже в друзьях
     public function isFriendWith(User $user) {
         return (bool) $this->friends()->where('id', $user->id)->count();  
-    }    
+    }  
+
 }

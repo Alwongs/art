@@ -1,60 +1,74 @@
 <x-app-layout>
     <x-slot name="header">
-        @if(Auth::user()->id === $user->id)
+        @if (Auth::user()->id === $user->id)
             Моя страница
         @else
             {{ $user->name }}
         @endif
     </x-slot>
-    <div class="person-page">
 
-        <div class="person-page__info">
-            <div class="person-page__img-block">
+    <div class="user-page">
+        <div class="user-page-info">
+            <div class="user-page-info__img-block">
                 <img src="{{ Storage::url('default-photo.jpg') }}" alt="photo">
             </div>
-            <div class="person-page__text-block">
-                <h1>{{ $user->name }}</h1>
 
-                @if ( Auth::user()->hasFriendRequestPending($user) )
-                    <p>{{ $user->name }} еще не принял(а) ваш запрос в друзья.</p>
-                @elseif ( Auth::user()->hasFriendRequestReceived($user) )
-                    <p><span>{{ $user->name }}</span> хочет с Вами подружиться.</p>
-                    <a href="{{ route('friends.accept', $user->id) }}" class="btn">Подтвердить дружбу</a>
-                @elseif ( Auth::user()->isFriendWith($user) )
-                    {{ $user->name }} у Вас в друзьях
-                @elseif ($user->id !== Auth::user()->id)
-                    <a href="{{ route('friends.request', $user->id) }}" class="btn">Добавить в друзья</a>                 
+            <div class="user-page-info__text-block">
+                <header>
+                    <h1>{{ $user->name }}</h1>
+                </header>
+
+                <main>
+                </main>
+
+                <footer>
+                    @if ( Auth::user()->hasFriendRequestPending($user) )
+                        <span> 
+                            Отправлен запрос в друзья.
+                        </span>
+                    @elseif ( Auth::user()->hasFriendRequestReceived($user) )
+                        <a href="{{ route('friends.accept', $user->id) }}" class="btn btn-green">
+                            Принять заявку в друзья
+                        </a>
+                    @elseif ( Auth::user()->isFriendWith($user) )
+
+                        <form action="{{ route('friends.delete', $user->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-red">
+                                Удалить из друзей
+                            </button>
+                        </form>
+ 
+                    @elseif ($user->id !== Auth::user()->id)
+                        <a href="{{ route('friends.request', $user->id) }}" class="btn btn-green">
+                            Добавить в друзья
+                        </a> 
+                    @endif
+                </footer>
+            </div>
+        </div>
+
+
+        <div class="user-page-content">
+            <div class="user-page-content__left">
+                @include('my-components.posts-block', ['posts' => $user->posts])  
+            </div>
+
+            <div class="user-page-content__right">
+                @if($user->friends()->count())
+                    @include('my-components.users-block-small', [
+                        'title' => Auth::user()->id === $user->id ? 'Ваши друзья:' : 'Друзья у ' . $user->name . ':', 
+                        'users' => $user->friends()
+                    ]) 
                 @endif
 
-                {{-- @if ($info)
-                    {{ $info }}
-                @endif --}}
+                @if($user->friendRequests()->count() && Auth::user()->id === $user->id)
+                    @include('my-components.users-block-small', [
+                        'title' => 'Запросы в друзья', 
+                        'users' => $user->friendRequests()
+                    ])    
+                @endif                
             </div>
         </div>
-
-
-
-        {{-- <div class="home-page__left">
-            <ul class="home-page__post-list">
-
-                @foreach($posts as $post)
-                    @include('my-components.post-card')
-                @endforeach
-
-            </ul>
-        </div>
-
-
-        <div class="home-page__right">
-            <div class="home-page__friends-block">
-                <h2>Ваши друзья</h2>
-                <ul class="home-page__friend-list">
-                    <li>first friend</li>
-                    <li>second friend</li>
-                    <li>third friend</li>
-                    <li>forth friend</li>
-                </ul>
-            </div>
-        </div> --}}
     </div>
 </x-app-layout>

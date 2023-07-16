@@ -7,21 +7,16 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-
 class FriendController extends Controller
 {
 
-    public function index() {
-        $currentUser = Auth::user();
-        $friends = $currentUser->friends();
-        $requests = $currentUser->friendRequests();
-
-
-
-        return view('pages.friends', compact('friends', 'requests'));
+    public function getMyFriends() 
+    {
+        return view('pages.friends');
     }
 
-    public function requestFriendship($id) {
+    public function requestFriendship($id) 
+    {
         $auth = Auth::user();
         $user = User::find($id);
 
@@ -42,7 +37,8 @@ class FriendController extends Controller
         return redirect()->route('users.show', $user->id)->with('info', 'Пользователю отправлен запрос в друзья');
     }
 
-    public function acceptFriendship($id) {
+    public function acceptFriendship($id) 
+    {
         $auth = Auth::user();
         $user = User::find($id);
 
@@ -55,5 +51,19 @@ class FriendController extends Controller
         $auth->acceptFriendRequest($user);
 
         return redirect()->route('users.show', $user->id)->with('info', 'Запрос в друзья принят');
+    }
+
+    public function deleteFriendship($id) 
+    {
+        $auth = Auth::user();
+        $user = User::find($id);
+
+        if ( !$auth->isFriendWith($user) ) {
+            return redirect()->back();
+        }    
+        
+        $auth->deleteFriend($user);
+
+        return redirect()->back()->with('info', $user->name . ' удален из друзей.');
     }
 }
