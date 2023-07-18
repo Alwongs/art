@@ -1,0 +1,7 @@
+@mixin block-styles( $padding ) {
+    background-color: $white;
+    border: 1px solid darken($baseBg, 5);
+    box-shadow: 1px 1px 20px 3px $blockShadow;
+    border-radius: 15px;
+    padding: $padding;
+}

@@ -2,26 +2,30 @@
     <x-slot name="header">
         Лента
     </x-slot>
-    <div class="home-page">
 
-        <div class="home-page__left">
+    <div class="flex-page">
+        <div class="flex-page__left">
+            <div class="btn-block mb-20">
+                <a href="{{ route('posts.create') }}" class="btn btn-blue">
+                    Добавить новую запись
+                </a>
+            </div>
             @include('my-components.posts-block')
         </div>
 
 
-        <div class="home-page__right">
+        <div class="flex-page__right">
             @auth
-                @if( $user->friends()->count() )
+                @if( Auth::user()->friends()->count() )
                     @include('my-components.users-block-small', [
                         'title' => 'Ваши друзья', 
-                        'users' => $user->friends()]
+                        'users' => Auth::user()->friends()]
                     )                
                 @endif
-                
-                @if($user->friendRequests()->count())
+                @if(Auth::user()->friendRequests()->count())
                     @include('my-components.users-block-small', [
                         'title' => 'Запросы в друзья', 
-                        'users' => $user->friendRequests()]
+                        'users' => Auth::user()->friendRequests()]
                     )    
                 @endif
             @endauth       

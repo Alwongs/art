@@ -3,13 +3,13 @@
         Художники
     </x-slot>
 
-    <div class="user-list-page">
+    <div class="flex-page">
 
-        <div class="user-list-page__left">
+        <div class="flex-page__left">
             @include('my-components.users-block')
         </div>
 
-        <div class="user-list-page__right">
+        <div class="flex-page__right">
         </div>
         
     </div>

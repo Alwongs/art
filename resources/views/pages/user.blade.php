@@ -8,12 +8,12 @@
     </x-slot>
 
     <div class="user-page">
-        <div class="user-page-info">
-            <div class="user-page-info__img-block">
+        <div class="user-page__about">
+            <div class="user-page__image">
                 <img src="{{ Storage::url('default-photo.jpg') }}" alt="photo">
             </div>
 
-            <div class="user-page-info__text-block">
+            <div class="user-page-text">
                 <header>
                     <h1>{{ $user->name }}</h1>
                 </header>
@@ -49,12 +49,18 @@
         </div>
 
 
-        <div class="user-page-content">
-            <div class="user-page-content__left">
+        <div class="flex-page">
+            <div class="flex-page__left">
+                <div class="btn-block mb-20">
+                    <a href="{{ route('posts.create') }}" class="btn btn-blue">
+                        Добавить новую запись
+                    </a>
+                </div>                 
                 @include('my-components.posts-block', ['posts' => $user->posts])  
             </div>
 
-            <div class="user-page-content__right">
+            <div class="flex-page__right">
+       
                 @if($user->friends()->count())
                     @include('my-components.users-block-small', [
                         'title' => Auth::user()->id === $user->id ? 'Ваши друзья:' : 'Друзья у ' . $user->name . ':', 

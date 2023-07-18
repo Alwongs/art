@@ -1,8 +1,13 @@
-auth: https://laravel.com/docs/10.x/starter-kits#laravel-breeze
+Установка SCSS в Laravel: 
+    npm install -D sass
 
 
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
+auth:
+    https://laravel.com/docs/10.x/starter-kits#laravel-breeze
 
-npm install -D sass
+
+Плэйлист Видеоуроки "Социальная сеть":
+    https://www.youtube.com/playlist?list=PLImtFYx3AEQwPWNuyoIbnvSXSFK8nOa5G
+
+
+    

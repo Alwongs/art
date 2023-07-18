@@ -1,21 +1,26 @@
-@import "reset";
-@import "common";
-@import "top-panel";
-@import "aside";
+@import "variables";
+@import "mixin";
+
+@import "fonts";
+
+@import "./layouts/reset";
+@import "./layouts/common";
+@import "./layouts/top-panel";
+@import "./layouts/aside";
+@import "./layouts/margin";
+
 @import "notification";
 @import "button";
-
 @import "home";
+@import "form";
 
-@import "posts";
-@import "posts-block";
-@import "post-card";
 
-@import "users-block";
-@import "users-block-small";
-@import "user-card";
-@import "user-card-small";
-@import "user";
+@import "./post/posts-block";
+@import "./post/post-card";
+
+@import "./user/user-page";
+@import "./user/users-block";
+@import "./user/user-card";
 
 @import "friends";
 

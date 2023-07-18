@@ -1,9 +1,13 @@
+.users-block {
+    
+    li:not(:last-child) {
+        margin-bottom: 16px;
+    }    
+}
+
 .users-block-small {
-    background-color: #fff;
-    border: 1px solid rgb(229, 229, 229);
-    box-shadow: 1px 1px 20px 3px rgba(145, 145, 145, 0.1);
-    border-radius: 15px;
-    padding: 26px;
+    @include block-styles(26px);
+
     &__title {
         font-size: 18px;
         font-weight: 600;

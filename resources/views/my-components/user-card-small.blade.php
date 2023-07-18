@@ -4,7 +4,7 @@
 
         <img src="{{ Storage::url('default-photo.jpg') }}" alt="avatar">
     
-        <h2 class="user-card-small__name">{{ $user->name }}</h2>
+        <h3 class="user-card-small__name">{{ $user->name }}</h3>
 
     </a>
 </li>
