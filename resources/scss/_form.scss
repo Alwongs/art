@@ -9,7 +9,7 @@
     }
     &__btn-block {
         display: flex;
-        justify-content: flex-end;
+        align-items: center;
     }
 }
 .input-block {
@@ -54,5 +54,26 @@
     &__error {
         color: red;
         font-size: 14px;
+    }
+}
+.input-file-block {
+    // width: 100%;
+    // display: flex;
+    // justify-content: center;
+}
+.input-file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    display: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.input-file-label {
+    span {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        line-height: 16px;
     }
 }

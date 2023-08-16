@@ -6,6 +6,7 @@
 .btn {
     display: flex;
     align-items: center;
+    justify-content: center;
     border-radius: 5px;
     color: $white;
     width: fit-content;
@@ -13,12 +14,42 @@
     height: 38px;
     font-size: 17px;
     padding: 0 20px;
-}
-.btn-green {
-    background-color: $btnGreen;
-    &:hover {
-        background-color: lighten($btnGreen,5);        
+    cursor: pointer;
+    &.hidden {
+        display: none;
     }
+}
+
+.btn-link {
+    display: block;
+    cursor: pointer;
+}
+
+.btn-link-blue {
+    color: $btnBlue;
+    &:hover {
+        color: lighten($btnBlue, 10);  
+    }     
+}
+
+.btn-link-default {
+    background-color: $white; 
+    color: $btnDefault;
+    &:hover {
+        color: lighten($btnDefault, 10);  
+    }     
+}
+
+
+
+.btn-green {
+    background-color: $white; 
+    border: 1px solid $btnGreen;
+    color: $btnGreen;
+    &:hover {
+        background-color: lighten($btnGreen, 5); 
+        color: $white;    
+    }  
 }
 .btn-red {
     background-color: $btnRed;
@@ -27,14 +58,26 @@
     }    
 }
 .btn-blue {
-    background-color: $btnBlue;
+    background-color: $white; 
+    border: 1px solid $btnBlue;
+    color: $btnBlue;
     &:hover {
-        background-color: lighten($btnBlue, 5);     
+        background-color: lighten($btnBlue, 5); 
+        color: $white;    
     }    
 }
 
 .btn-light {
+    background-color: transparent;
+    border: none;
     font-size: 15px;
+    cursor: pointer;
+}
+.btn-light-green {
+    color: green;
+    &:hover {
+        color: lighten(green, 15);     
+    }      
 }
 .btn-light-red {
     color: red;

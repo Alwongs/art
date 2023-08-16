@@ -3,15 +3,18 @@
 
 @import "fonts";
 
-@import "./layouts/reset";
-@import "./layouts/common";
-@import "./layouts/top-panel";
-@import "./layouts/aside";
-@import "./layouts/margin";
+@import "reset";
+@import "common";
+@import "top-panel";
+@import "menu";
+@import "aside";
+@import "icons";
+
+
+@import "margin";
 
 @import "notification";
 @import "button";
-@import "home";
 @import "form";
 
 

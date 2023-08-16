@@ -1,13 +1,23 @@
 Установка SCSS в Laravel: 
     npm install -D sass
+.
 
-
-auth:
+auth laravel-breeze:
     https://laravel.com/docs/10.x/starter-kits#laravel-breeze
-
+.
 
 Плэйлист Видеоуроки "Социальная сеть":
     https://www.youtube.com/playlist?list=PLImtFYx3AEQwPWNuyoIbnvSXSFK8nOa5G
+.
 
+Плэйлист Видуоуроки "Блог"
+    https://www.youtube.com/playlist?list=PLd2_Os8Cj3t8StX6GztbdMIUXmgPuingB
+.
 
-    
+Проблемы с символической ссылкой:
+    https://qna.habr.com/q/518786
+.
+
+Работа с изображениями (библиотека Image):
+    https://www.youtube.com/watch?v=Q4BfXWXpE0E
+.

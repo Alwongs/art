@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Http\Requests\Avatar\StoreRequest as AvatarStoreRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+use Image;
 
 class ProfileController extends Controller
 {
@@ -57,4 +61,20 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+
+    public function uploadAvatar(Request $request, $userId) {
+
+        $data = $request->validated();
+
+        dd($data);
+
+        $data['user_id'] = Auth::user()->id;
+        $data['image'] = Storage::disk('public')->put('images', $data['image']);
+
+        Post::create($data);
+
+
+        return redirect()->route('posts.index');
+    }    
 }

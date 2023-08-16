@@ -5,11 +5,15 @@
 
     <div class="flex-page">
         <div class="flex-page__left">
-            <div class="btn-block mb-20">
-                <a href="{{ route('posts.create') }}" class="btn btn-blue">
-                    Добавить новую запись
-                </a>
-            </div>
+
+            @auth
+                <div class="btn-block mb-15">
+                    <a href="{{ route('posts.create') }}" class="btn-link-blue">
+                        Добавить новую запись
+                    </a>
+                </div>
+            @endauth
+
             @include('my-components.posts-block')
         </div>
 

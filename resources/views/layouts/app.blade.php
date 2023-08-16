@@ -22,7 +22,7 @@
     </head>
     <body>
         <div class="website">
-            @include('layouts.navigation')
+            @include('layouts.top-panel')
 
             <div class="website-content container">
                 <div class="website-aside">

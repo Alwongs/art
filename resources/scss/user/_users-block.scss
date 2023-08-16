@@ -6,7 +6,7 @@
 }
 
 .users-block-small {
-    @include block-styles(26px);
+    @include block-styles(20px);
 
     &__title {
         font-size: 18px;

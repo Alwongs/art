@@ -10,7 +10,11 @@
     <div class="user-page">
         <div class="user-page__about">
             <div class="user-page__image">
-                <img src="{{ Storage::url('default-photo.jpg') }}" alt="photo">
+                @if ($user->avatar)
+                    <img src="{{ Storage::url($user->avatar) }}" alt="photo">
+                @else
+                    <img src="{{ Storage::url($user->getDefaultAvatar()) }}" alt="photo">
+                @endif
             </div>
 
             <div class="user-page-text">
@@ -19,6 +23,16 @@
                 </header>
 
                 <main>
+                    @if(Auth::user()->id === $user->id)
+                        <form class="input-file-form" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="input-file-block">
+                                @include('my-components.input-file', ['title' => $user->avatar ? 'Обновить фотографию' : 'Загрузить фотографию'])
+                            </div>
+                            <input id="saveAvatarBtn" type="submit" value="Сохранить" class="btn btn-green hidden">
+                        </form>
+                    @endif
                 </main>
 
                 <footer>
@@ -52,7 +66,7 @@
         <div class="flex-page">
             <div class="flex-page__left">
                 <div class="btn-block mb-20">
-                    <a href="{{ route('posts.create') }}" class="btn btn-blue">
+                    <a href="{{ route('posts.create') }}" class="btn-link-blue">
                         Добавить новую запись
                     </a>
                 </div>                 

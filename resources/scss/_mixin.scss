@@ -1,0 +1,22 @@
+@mixin block-styles( $padding ) {
+    background-color: $white;
+    border: 1px solid darken($baseBg, 5);
+    box-shadow: 1px 1px 20px 3px $blockShadow;
+    border-radius: 10px;
+    padding: $padding;
+    @media (max-width: 768px) {
+        padding: 12px;
+    }    
+}
+
+
+
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 992px) {
+
+}
+@media (max-width: 768px) {
+
+}

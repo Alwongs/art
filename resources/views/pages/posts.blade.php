@@ -6,7 +6,7 @@
 
         <div class="flex-page__left">
             <div class="btn-block mb-20">
-                <a href="{{ route('posts.create') }}" class="btn btn-blue">
+                <a href="{{ route('posts.create') }}" class="btn btn-link-blue">
                     Добавить новую запись
                 </a>
             </div>        

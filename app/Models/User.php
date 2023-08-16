@@ -112,4 +112,33 @@ class User extends Authenticatable
         return (bool) $this->friends()->where('id', $user->id)->count();  
     }  
 
+    public function getAvatarPath($user_id)
+    {
+        
+
+
+        // $path = "app/public/avatars/id{$user_id}";
+
+        // if ( !file_exists($path) ) mkdir($path, 0777, true);
+
+        // return "$path/";
+    }
+
+    public function clearAvatars($user_id) 
+    {
+        $path = "app/public/avatars/id{$user_id}";
+
+        if ( !file_exists(public_path("/$path")) ) {
+            foreach( glob( public_path("/$path/*")) as $avatar ) {
+                unlink($avatar);
+            }
+        }
+    }
+
+
+
+
+    public function getDefaultAvatar() {
+        return 'images/default-photo.jpg';
+    }
 }

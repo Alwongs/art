@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Post\StoreRequest as PostStoreRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -35,7 +36,13 @@ class PostController extends Controller
     {
         $data = $request->validated();
         $data['user_id'] = Auth::user()->id;
-        Post::firstOrCreate($data);
+        
+        if (!empty($data['image'])) {
+            $data['image'] = Storage::disk('public')->put('images', $data['image']);
+        }
+
+        Post::create($data);
+
 
         return redirect()->route('posts.index');
     }
@@ -70,8 +77,26 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         if (Auth::user()->id === $post->user->id) {
+
+            if($post->image) {
+                Storage::delete($post->image);
+            }
+
             $post->delete();
             return redirect()->back()->with('info', 'Запись успешно удалена'); 
+
+
+
+
+
+
+
+
+
+
+
+
+
         } else {
             return redirect()->back()->with('info', 'Это не ваш пост! Не вам и удалять!');              
         }

@@ -2,12 +2,22 @@
     <div class="top-panel__container container">
 
         <div class="top-panel-left">
-            <a href="{{ route('home') }}">
+
+            <a href="{{ route('home') }}" class="top-panel-left__logo-block">
                 <x-application-logo class="top-panel-left__logo" />
+                <span>Draw It</span>
             </a>
-            <a href="{{ route('home') }}">
-                Drow It
-            </a>
+
+
+            <div class="top-panel-left__menu menu">
+                <div class="menu__icon">
+                    <span></span>
+                </div>
+                <nav class="menu__body">
+                    @include('my-components.navigation')  
+                </nav>
+            </div>
+
         </div>
 
 
@@ -17,7 +27,10 @@
             <div class="top-panel-right__dropdown">
                 @auth
                     <a href="{{ route('profile.edit') }}">
-                        {{ Auth::user()->name }}
+                        {{-- {{ Auth::user()->name }} --}}
+                        <div class="top-panel-right__profile-image">
+                            <img src="{{ Storage::url(Auth::user()->avatar ?: $user->getDefaultAvatar()) }}" alt="avatar">
+                        </div>
                     </a>        
                 @else
                     <span>Guest</span>

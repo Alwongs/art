@@ -1,0 +1,11 @@
+.icon-link {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    svg {
+        width: 18px;
+        height: 18px;
+        fill: $baseText;
+    }
+}
+

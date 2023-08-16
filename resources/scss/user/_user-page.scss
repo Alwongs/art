@@ -1,43 +1,46 @@
 .user-page {
     &__about {
-        @include block-styles(26px);
+        @include block-styles(20px);
         margin-bottom: 20px;
         display: flex;
         gap: 20px; 
+        @media (max-width: 768px) {
+            flex-direction: column;
+        }        
     }
-    &__text {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+    &__image {
+        height: 300px;
+        text-align: center;
+        background-color: $baseBg;
+        border-radius: 3px;
+        img {
+            height: 100%;
+        }
     }
 }
 
-
-
-
-.user-page-info__text-block {
-
+.user-page-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    .input-file-form {
+        display: flex;
+        gap: 10px;
+    }
     header h1 {
-        font-size: 20px;
+        font-size: 22px;
+    }
+    main {
+        flex: 1 1 auto;
+    }
+    main .input-file-block {
+        margin-bottom: 8px;
     }
     footer {
         display: flex;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .user-page-content {
     display: flex;
@@ -71,4 +74,17 @@
     li {
         margin-bottom: 16px;
     }
+}
+
+
+
+
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 992px) {
+
+}
+@media (max-width: 768px) {
+
 }

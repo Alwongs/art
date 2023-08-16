@@ -12,40 +12,60 @@
         text-align: center;
         margin-bottom: 8px;
     }
+    &__image-block {
+        border: 1px solid $baseBg;
+        border-radius: 5px;
+        height: 100px;
+        width: 100px;
+        text-align: center;
+        overflow: hidden;
+    }
     img {
-        height: 70px;
+        height: 100%;
     }
 }
 
 .user-card-small {
-    height: 60px;
     a {
         display: flex;
         align-items: center;
         height: 100%;
         gap: 20px;
     }
-    img {
-        height: 100%;
+    &__image-block {
         border-radius: 50%;
+        overflow: hidden;
+        height: 60px;
+        width: 60px;
     }
+    &__image-block img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    } 
     &__name {
         font-weight: 600;
     }
 }
 
 .user-card-small-extra {
-    height: 44px;
     a {
         display: flex;
         align-items: center;
         height: 100%;
         gap: 20px;
     }
-    img {
-        height: 100%;
+    &__image-block {
         border-radius: 50%;
+        overflow: hidden;
+        height: 44px;
+        width: 44px;
     }
+    &__image-block img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    } 
     &__name {
         font-size: 17px;
         font-weight: 600;

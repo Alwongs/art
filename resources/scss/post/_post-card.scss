@@ -1,5 +1,5 @@
 .post-card {
-    @include block-styles(26px);
+    @include block-styles(20px);
 
     header {
         display: flex;
@@ -17,7 +17,17 @@
         margin-bottom: 8px;
     }
     &__image {
+        display: flex;
+        justify-content: center;
+        background-color: $baseBg;
+        overflow: hidden;
+        border-radius: 10px;
         margin-bottom: 16px;
-        width: 100%;
+        text-align: center;
+        img {
+            display: block;
+            max-height: $postCardImageHeight;
+            max-width: 100%;
+        }
     }
 }
