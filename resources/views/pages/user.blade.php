@@ -77,7 +77,7 @@
        
                 @if($user->friends()->count())
                     @include('my-components.users-block-small', [
-                        'title' => Auth::user()->id === $user->id ? 'Ваши друзья:' : 'Друзья у ' . $user->name . ':', 
+                        'title' => Auth::user()->id === $user->id ? 'Ваши друзья:' : 'Друзья у ' . $user->first_name . ':', 
                         'users' => $user->friends()
                     ]) 
                 @endif
