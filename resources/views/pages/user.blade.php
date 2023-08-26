@@ -19,7 +19,7 @@
 
             <div class="user-page-text">
                 <header>
-                    <h1>{{ $user->name }}</h1>
+                    <h1>{{ $user->first_name }} {{ $user->last_name }}</h1>
                 </header>
 
                 <main>

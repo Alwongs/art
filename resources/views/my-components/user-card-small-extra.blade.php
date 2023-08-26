@@ -5,6 +5,6 @@
             <img src="{{ Storage::url($user->avatar ?: $user->getDefaultAvatar()) }}" alt="avatar">
 
         </div>
-        <h3 class="user-card-small-extra__name">{{ $user->name }}</h3>
+        <h3 class="user-card-small-extra__name">{{ $user->first_name }} {{ $user->last_name }}</h3>
     </a>
 </div>
